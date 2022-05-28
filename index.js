@@ -8,9 +8,11 @@
 
 function removeLikes() {
     let deletePostLink = document.body.querySelectorAll('div.PostBottomAction._like.active[onclick^="Likes.toggle"]');
-    for (let i = 0; i < deletePostLink.length; i++) {
-        deletePostLink[i].click();
-    }
+    deletePostLink.forEach((value, currentIndex) => {
+        setTimeout(() => {
+            value.click();
+        }, 1000*currentIndex);
+    });
     console.log(deletePostLink.length + ' likes deleted');
     window.scrollTo(0, document.body.scrollHeight);
     setTimeout(removeLikes, 10000);
